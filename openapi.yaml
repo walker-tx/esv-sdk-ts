@@ -1,0 +1,496 @@
+openapi: 3.1.0
+
+info:
+  title: ESV.org API
+  description: >- 
+    The ESV API provides access to the ESV text, with a customizable presentation in 
+    multiple formats. You will need an HTTP client in your programming language of 
+    choice to use the API.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: "https://api.esv.org/v3/"
+    description: Production server
+
+security:
+  - apiKeyAuth: []
+
+tags:
+  - name: Passages
+
+paths:
+  /passage/html/:
+    get:
+      summary: Get Bible passage HTML
+      description: Returns Bible passage text with HTML formatting
+      operationId: getPassageHtml
+      tags: [Passages]
+      x-speakeasy-name-override: getHtml
+      parameters:
+        - $ref: "#/components/parameters/PassageSearchQuery"
+        - $ref: "#/components/parameters/IncludePassageReferences"
+        - $ref: "#/components/parameters/IncludeVerseNumbers"
+        - $ref: "#/components/parameters/IncludeFirstVerseNumbers"
+        - $ref: "#/components/parameters/IncludeFootnotes"
+        - $ref: "#/components/parameters/IncludeFootnoteBody"
+        - $ref: "#/components/parameters/IncludeHeadings"
+        - $ref: "#/components/parameters/IncludeShortCopyright"
+        - $ref: "#/components/parameters/IncludeCopyright"
+        - $ref: "#/components/parameters/IncludePassageHorizontalLines"
+        - $ref: "#/components/parameters/IncludeHeadingHorizontalLines"
+        - $ref: "#/components/parameters/HorizontalLineLength"
+        - $ref: "#/components/parameters/IncludeSelahs"
+        - name: include-css-link
+          in: query
+          description: Include a link to the ESV API CSS file
+          schema:
+            type: boolean
+            default: true
+        - name: inline-styles
+          in: query
+          description: Include inline styles on HTML elements
+          schema:
+            type: boolean
+            default: false
+        - name: wrapping-div
+          in: query
+          description: Wrap the HTML output in a div with class="esv"
+          schema:
+            type: boolean
+            default: true
+        - name: div-classes
+          in: query
+          description: Classes to add to the wrapping div
+          schema:
+            type: string
+            default: "esv"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: The passage reference that was requested
+                  canonical:
+                    type: string
+                    description: The canonical version of the passage reference
+                  parsed:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: integer
+                    description: Array of parsed passage references
+                  passage_meta:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        canonical:
+                          type: string
+                        chapter_start:
+                          type: array
+                          items:
+                            type: integer
+                        chapter_end:
+                          type: array
+                          items:
+                            type: integer
+                        prev_verse:
+                          type: array
+                          items:
+                            type: integer
+                        next_verse:
+                          type: array
+                          items:
+                            type: integer
+                        prev_chapter:
+                          type: array
+                          items:
+                            type: integer
+                        next_chapter:
+                          type: array
+                          items:
+                            type: integer
+                  passages:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of HTML-formatted passage text
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /passage/text/:
+    get:
+      summary: Get Bible passage text
+      description: Returns Bible passage text based on the provided query parameters
+      operationId: getPassageText
+      tags: [Passages]
+      x-speakeasy-name-override: getText
+      parameters:
+        - $ref: "#/components/parameters/PassageSearchQuery"
+        - $ref: "#/components/parameters/IncludePassageReferences"
+        - $ref: "#/components/parameters/IncludeVerseNumbers"
+        - $ref: "#/components/parameters/IncludeFirstVerseNumbers"
+        - $ref: "#/components/parameters/IncludeFootnotes"
+        - $ref: "#/components/parameters/IncludeFootnoteBody"
+        - $ref: "#/components/parameters/IncludeHeadings"
+        - $ref: "#/components/parameters/IncludeShortCopyright"
+        - $ref: "#/components/parameters/IncludeCopyright"
+        - $ref: "#/components/parameters/IncludePassageHorizontalLines"
+        - $ref: "#/components/parameters/IncludeHeadingHorizontalLines"
+        - $ref: "#/components/parameters/HorizontalLineLength"
+        - $ref: "#/components/parameters/IncludeSelahs"
+        - name: indent-using
+          in: query
+          description: Character to use for indentation
+          schema:
+            type: string
+            default: space
+            enum: [space, tab]
+        - name: indent-paragraphs
+          in: query
+          description: Number of indentation characters for paragraphs
+          schema:
+            type: integer
+            default: 2
+        - name: indent-poetry
+          in: query
+          description: Number of indentation characters for poetry
+          schema:
+            type: integer
+            default: 2
+        - name: indent-poetry-lines
+          in: query
+          description: Number of indentation characters for poetry lines
+          schema:
+            type: integer
+            default: 4
+        - name: indent-declares
+          in: query
+          description: Number of indentation characters for declares
+          schema:
+            type: integer
+            default: 40
+        - name: indent-psalm-doxology
+          in: query
+          description: Number of indentation characters for Psalm doxology
+          schema:
+            type: integer
+            default: 30
+        - name: line-length
+          in: query
+          description: Maximum line length
+          schema:
+            type: integer
+            default: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: The passage reference that was requested
+                  canonical:
+                    type: string
+                    description: The canonical version of the passage reference
+                  parsed:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: integer
+                    description: Array of parsed passage references
+                  passage_meta:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        canonical:
+                          type: string
+                        chapter_start:
+                          type: array
+                          items:
+                            type: integer
+                        chapter_end:
+                          type: array
+                          items:
+                            type: integer
+                        prev_verse:
+                          type: array
+                          items:
+                            type: integer
+                        next_verse:
+                          type: array
+                          items:
+                            type: integer
+                        prev_chapter:
+                          type: array
+                          items:
+                            type: integer
+                        next_chapter:
+                          type: array
+                          items:
+                            type: integer
+                  passages:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of formatted passage text
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  parameters:
+    IncludePassageReferences:
+      name: include-passage-references
+      in: query
+      description: Include passage references before passages
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeVerseNumbers:
+      name: include-verse-numbers
+      in: query
+      description: Include verse numbers
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeFirstVerseNumbers:
+      name: include-first-verse-numbers
+      in: query
+      description: Include the verse number for the first verse of a chapter
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeFootnotes:
+      name: include-footnotes
+      in: query
+      description: Include callouts to footnotes in the text.
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeFootnoteBody:
+      name: include-footnote-body
+      in: query
+      description: Include footnote body content
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeHeadings:
+      name: include-headings
+      in: query
+      description: Include passage headings
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    IncludeShortCopyright:
+      name: include-short-copyright
+      in: query
+      description: Include a short copyright notice
+      schema:
+        type: boolean
+        default: false
+      example: false
+
+    IncludeCopyright:
+      name: include-copyright
+      in: query
+      description: Include the full copyright notice
+      schema:
+        type: boolean
+        default: false
+      example: false
+
+    IncludePassageHorizontalLines:
+      name: include-passage-horizontal-lines
+      in: query
+      description: Include horizontal lines between passages
+      schema:
+        type: boolean
+        default: false
+      example: false
+  
+    IncludeHeadingHorizontalLines:
+      name: include-heading-horizontal-lines
+      in: query
+      description: Include horizontal lines under headings
+      schema:
+        type: boolean
+        default: false
+      example: false
+  
+    HorizontalLineLength:
+      name: horizontal-line-length
+      in: query
+      description: Length of horizontal lines
+      schema:
+        type: integer
+        default: 55
+      example: 55
+  
+    IncludeSelahs:
+      name: include-selahs
+      in: query
+      description: Include "Selah" in passage text
+      schema:
+        type: boolean
+        default: true
+      example: true
+
+    PassageSearchQuery:
+      name: q
+      in: query
+      required: true
+      description: Bible passage reference (e.g., "John 3:16" or "43011016")
+      schema:
+        type: string
+      examples:
+        StandardReference:
+          $ref: "#/components/examples/StandardReference"
+        CompactNotation:
+          $ref: "#/components/examples/CompactNotation"
+        ChapterRange:
+          $ref: "#/components/examples/ChapterRange"
+        NumericalEncoding:
+          $ref: "#/components/examples/NumericalEncoding"
+        DigitalRange:
+          $ref: "#/components/examples/DigitalRange"
+        MultiReference:
+          $ref: "#/components/examples/MultiReference"
+        StructuredDigital:
+          $ref: "#/components/examples/StructuredDigital"
+  
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - email
+        - username
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+          minLength: 3
+        firstName:
+          type: string
+        lastName:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    UserInput:
+      type: object
+      required:
+        - email
+        - username
+      properties:
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+          minLength: 3
+        firstName:
+          type: string
+        lastName:
+          type: string
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+
+  examples:
+    StandardReference:
+      summary: "Standard Bible Verse Notation"
+      value: "John 1:1"
+
+    CompactNotation:
+      summary: "Compact Digital-Friendly Notation"
+      value: "jn11.35"
+
+    ChapterRange:
+      summary: "Chapter Range Notation"
+      value: "Genesis 1-3"
+
+    NumericalEncoding:
+      summary: "Numerical Encoding of a Verse"
+      value: "43011035"
+
+    DigitalRange:
+      summary: "Structured Digital Range Notation"
+      value: "01001001-01011032"
+
+    MultiReference:
+      summary: "Multiple Verses Notation"
+      value: "John1.1;Genesis1.1"
+
+    StructuredDigital:
+      summary: "Structured Digital Notation for Multiple Ranges"
+      value: "19001001-19001006,19003001-19003008"

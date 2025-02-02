@@ -1,0 +1,36 @@
+speakeasyVersion: 1.481.1
+sources:
+    ESV.org API:
+        sourceNamespace: esv-org-api
+        sourceRevisionDigest: sha256:64279f2aa93b4d488d8f63e8c690526e80c2bde4b1364c2334c4c2d130c0c0ee
+        sourceBlobDigest: sha256:c96509f88bb05b1cbcdc3ae20cbf9d1a1705cb5c3dbc03279cca63cf60273aed
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    esv:
+        source: ESV.org API
+        sourceNamespace: esv-org-api
+        sourceRevisionDigest: sha256:64279f2aa93b4d488d8f63e8c690526e80c2bde4b1364c2334c4c2d130c0c0ee
+        sourceBlobDigest: sha256:c96509f88bb05b1cbcdc3ae20cbf9d1a1705cb5c3dbc03279cca63cf60273aed
+        codeSamplesNamespace: esv-org-api-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:684d8f09adaf6848e2a61a6e9539318a3eec88e90532b3e8c2e8ca540ba1922c
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        ESV.org API:
+            inputs:
+                - location: openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/walker/esv/esv-org-api
+    targets:
+        esv:
+            target: typescript
+            source: ESV.org API
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/walker/esv/esv-org-api-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false
