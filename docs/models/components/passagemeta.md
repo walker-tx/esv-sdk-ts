@@ -1,11 +1,11 @@
-# GetPassageTextPassageMeta
+# PassageMeta
 
 ## Example Usage
 
 ```typescript
-import { GetPassageTextPassageMeta } from "esv-sdk/models/operations";
+import { PassageMeta } from "esv-sdk/models/components";
 
-let value: GetPassageTextPassageMeta = {};
+let value: PassageMeta = {};
 ```
 
 ## Fields
@@ -15,7 +15,7 @@ let value: GetPassageTextPassageMeta = {};
 | `canonical`        | *string*           | :heavy_minus_sign: | N/A                |
 | `chapterStart`     | *number*[]         | :heavy_minus_sign: | N/A                |
 | `chapterEnd`       | *number*[]         | :heavy_minus_sign: | N/A                |
-| `prevVerse`        | *number*[]         | :heavy_minus_sign: | N/A                |
-| `nextVerse`        | *number*[]         | :heavy_minus_sign: | N/A                |
+| `prevVerse`        | *number*           | :heavy_minus_sign: | N/A                |
+| `nextVerse`        | *number*           | :heavy_minus_sign: | N/A                |
 | `prevChapter`      | *number*[]         | :heavy_minus_sign: | N/A                |
 | `nextChapter`      | *number*[]         | :heavy_minus_sign: | N/A                |

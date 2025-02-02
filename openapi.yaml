@@ -16,7 +16,7 @@ servers:
     description: Production server
 
 security:
-  - apiKeyAuth: []
+  - apiKey: []
 
 tags:
   - name: Passages
@@ -26,6 +26,9 @@ paths:
     get:
       summary: Get Bible passage HTML
       description: Returns Bible passage text with HTML formatting
+      externalDocs: 
+        url: https://api.esv.org/docs/passage-html/
+        description: Esv.org API Docs for `/v3/passages/html`
       operationId: getPassageHtml
       tags: [Passages]
       x-speakeasy-name-override: getHtml
@@ -73,57 +76,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  query:
-                    type: string
-                    description: The passage reference that was requested
-                  canonical:
-                    type: string
-                    description: The canonical version of the passage reference
-                  parsed:
-                    type: array
-                    items:
-                      type: array
-                      items:
-                        type: integer
-                    description: Array of parsed passage references
-                  passage_meta:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        canonical:
-                          type: string
-                        chapter_start:
-                          type: array
-                          items:
-                            type: integer
-                        chapter_end:
-                          type: array
-                          items:
-                            type: integer
-                        prev_verse:
-                          type: array
-                          items:
-                            type: integer
-                        next_verse:
-                          type: array
-                          items:
-                            type: integer
-                        prev_chapter:
-                          type: array
-                          items:
-                            type: integer
-                        next_chapter:
-                          type: array
-                          items:
-                            type: integer
-                  passages:
-                    type: array
-                    items:
-                      type: string
-                    description: Array of HTML-formatted passage text
+                $ref: "#/components/schemas/PassageResponse"
         "400":
           description: Bad request
           content:
@@ -141,6 +94,9 @@ paths:
     get:
       summary: Get Bible passage text
       description: Returns Bible passage text based on the provided query parameters
+      externalDocs: 
+        url: https://api.esv.org/docs/passage-text/
+        description: Esv.org API Docs for `/v3/passages/text`
       operationId: getPassageText
       tags: [Passages]
       x-speakeasy-name-override: getText
@@ -207,57 +163,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  query:
-                    type: string
-                    description: The passage reference that was requested
-                  canonical:
-                    type: string
-                    description: The canonical version of the passage reference
-                  parsed:
-                    type: array
-                    items:
-                      type: array
-                      items:
-                        type: integer
-                    description: Array of parsed passage references
-                  passage_meta:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        canonical:
-                          type: string
-                        chapter_start:
-                          type: array
-                          items:
-                            type: integer
-                        chapter_end:
-                          type: array
-                          items:
-                            type: integer
-                        prev_verse:
-                          type: array
-                          items:
-                            type: integer
-                        next_verse:
-                          type: array
-                          items:
-                            type: integer
-                        prev_chapter:
-                          type: array
-                          items:
-                            type: integer
-                        next_chapter:
-                          type: array
-                          items:
-                            type: integer
-                  passages:
-                    type: array
-                    items:
-                      type: string
-                    description: Array of formatted passage text
+                $ref: "#/components/schemas/PassageResponse"
         "400":
           description: Bad request
           content:
@@ -273,10 +179,16 @@ paths:
 
 components:
   securitySchemes:
-    apiKeyAuth:
+    apiKey:
       type: apiKey
-      in: header
       name: Authorization
+      description: >-
+        The application key used to make a request. Do _not_ include the `Token` prefix.
+        For more information on application keys and API authorization, visit the [ESV.org
+        API docs].
+
+        ![ESV.org API docs]: https://api.esv.org/docs/
+      in: header
 
   parameters:
     IncludePassageReferences:
@@ -390,6 +302,7 @@ components:
     PassageSearchQuery:
       name: q
       in: query
+      x-speakeasy-name-override: query
       required: true
       description: Bible passage reference (e.g., "John 3:16" or "43011016")
       schema:
@@ -411,6 +324,58 @@ components:
           $ref: "#/components/examples/StructuredDigital"
   
   schemas:
+    PassageResponse:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The passage reference that was requested
+        canonical:
+          type: string
+          description: The canonical version of the passage reference
+        parsed:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+          description: Array of parsed passage references
+        passage_meta:
+          type: array
+          items:
+            $ref: "#/components/schemas/PassageMeta"
+        passages:
+          type: array
+          items:
+            type: string
+          description: Array of formatted passage text
+
+    PassageMeta:
+      type: object
+      properties:
+        canonical:
+          type: string
+        chapter_start:
+          type: array
+          items:
+            type: integer
+        chapter_end:
+          type: array
+          items:
+            type: integer
+        prev_verse:
+          type: integer
+        next_verse:
+          type: integer
+        prev_chapter:
+          type: array
+          items:
+            type: integer
+        next_chapter:
+          type: array
+          items:
+            type: integer
+
     User:
       type: object
       required:

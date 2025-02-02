@@ -10,6 +10,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -28,6 +29,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Returns Bible passage text with HTML formatting
+ *
+ * @see {@link https://api.esv.org/docs/passage-html/} - Esv.org API Docs for `/v3/passages/html`
  */
 export async function passagesGetHtml(
   client: EsvCore,
@@ -35,7 +38,7 @@ export async function passagesGetHtml(
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.GetPassageHtmlResponseBody,
+    components.PassageResponse,
     | errors.ErrorT
     | APIError
     | SDKValidationError
@@ -77,7 +80,7 @@ export async function passagesGetHtml(
     "include-short-copyright": payload["include-short-copyright"],
     "include-verse-numbers": payload["include-verse-numbers"],
     "inline-styles": payload["inline-styles"],
-    "q": payload.q,
+    "q": payload.query,
     "wrapping-div": payload["wrapping-div"],
   });
 
@@ -85,8 +88,8 @@ export async function passagesGetHtml(
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKeyAuth);
-  const securityInput = secConfig == null ? {} : { apiKeyAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
@@ -95,7 +98,7 @@ export async function passagesGetHtml(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.apiKeyAuth,
+    securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -133,7 +136,7 @@ export async function passagesGetHtml(
   };
 
   const [result] = await M.match<
-    operations.GetPassageHtmlResponseBody,
+    components.PassageResponse,
     | errors.ErrorT
     | APIError
     | SDKValidationError
@@ -143,7 +146,7 @@ export async function passagesGetHtml(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetPassageHtmlResponseBody$inboundSchema),
+    M.json(200, components.PassageResponse$inboundSchema),
     M.jsonErr([400, 401], errors.ErrorT$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

@@ -98,12 +98,12 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Esv } from "esv-sdk";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result
@@ -122,21 +122,21 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type   | Scheme  | Environment Variable |
-| ------------ | ------ | ------- | -------------------- |
-| `apiKeyAuth` | apiKey | API key | `ESV_API_KEY_AUTH`   |
+| Name     | Type   | Scheme  | Environment Variable |
+| -------- | ------ | ------- | -------------------- |
+| `apiKey` | apiKey | API key | `ESV_API_KEY`        |
 
-To authenticate with the API the `apiKeyAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Esv } from "esv-sdk";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result
@@ -194,12 +194,12 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Esv } from "esv-sdk";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   }, {
     retries: {
       strategy: "backoff",
@@ -236,12 +236,12 @@ const esv = new Esv({
     },
     retryConnectionErrors: false,
   },
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result
@@ -270,14 +270,14 @@ import { Esv } from "esv-sdk";
 import { ErrorT, SDKValidationError } from "esv-sdk/models/errors";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   let result;
   try {
     result = await esv.passages.getHtml({
-      q: "John 1:1",
+      query: "John 1:1",
     });
 
     // Handle the result
@@ -333,12 +333,12 @@ import { Esv } from "esv-sdk";
 
 const esv = new Esv({
   serverURL: "https://api.esv.org/v3/",
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result

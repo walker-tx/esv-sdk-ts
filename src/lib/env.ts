@@ -7,13 +7,13 @@ import { dlv } from "./dlv.js";
 import * as z from "zod";
 
 export interface Env {
-  ESV_API_KEY_AUTH?: string | undefined;
+  ESV_API_KEY?: string | undefined;
 
   ESV_DEBUG?: boolean | undefined;
 }
 
 export const envSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
-  ESV_API_KEY_AUTH: z.string().optional(),
+  ESV_API_KEY: z.string().optional(),
 
   ESV_DEBUG: z.coerce.boolean().optional(),
 });

@@ -12,18 +12,21 @@
 
 Returns Bible passage text with HTML formatting
 
+Esv.org API Docs for `/v3/passages/html`
+<https://api.esv.org/docs/passage-html/>
+
 ### Example Usage
 
 ```typescript
 import { Esv } from "esv-sdk";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getHtml({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result
@@ -44,12 +47,12 @@ import { passagesGetHtml } from "esv-sdk/funcs/passagesGetHtml.js";
 // Use `EsvCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const esv = new EsvCore({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const res = await passagesGetHtml(esv, {
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   if (!res.ok) {
@@ -76,7 +79,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetPassageHtmlResponseBody](../../models/operations/getpassagehtmlresponsebody.md)\>**
+**Promise\<[components.PassageResponse](../../models/components/passageresponse.md)\>**
 
 ### Errors
 
@@ -89,18 +92,21 @@ run();
 
 Returns Bible passage text based on the provided query parameters
 
+Esv.org API Docs for `/v3/passages/text`
+<https://api.esv.org/docs/passage-text/>
+
 ### Example Usage
 
 ```typescript
 import { Esv } from "esv-sdk";
 
 const esv = new Esv({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await esv.passages.getText({
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   // Handle the result
@@ -121,12 +127,12 @@ import { passagesGetText } from "esv-sdk/funcs/passagesGetText.js";
 // Use `EsvCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const esv = new EsvCore({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const res = await passagesGetText(esv, {
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   if (!res.ok) {
@@ -153,7 +159,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetPassageTextResponseBody](../../models/operations/getpassagetextresponsebody.md)\>**
+**Promise\<[components.PassageResponse](../../models/components/passageresponse.md)\>**
 
 ### Errors
 

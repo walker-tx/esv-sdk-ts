@@ -26,12 +26,12 @@ import { SDKValidationError } from "esv-sdk/models/errors/sdkvalidationerror.js"
 // Use `EsvCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const esv = new EsvCore({
-  apiKeyAuth: process.env["ESV_API_KEY_AUTH"] ?? "",
+  apiKey: process.env["ESV_API_KEY"] ?? "",
 });
 
 async function run() {
   const res = await passagesGetHtml(esv, {
-    q: "John 1:1",
+    query: "John 1:1",
   });
 
   switch (true) {

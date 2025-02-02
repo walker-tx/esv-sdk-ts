@@ -10,6 +10,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -28,6 +29,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Returns Bible passage text based on the provided query parameters
+ *
+ * @see {@link https://api.esv.org/docs/passage-text/} - Esv.org API Docs for `/v3/passages/text`
  */
 export async function passagesGetText(
   client: EsvCore,
@@ -35,7 +38,7 @@ export async function passagesGetText(
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.GetPassageTextResponseBody,
+    components.PassageResponse,
     | errors.ErrorT
     | APIError
     | SDKValidationError
@@ -81,15 +84,15 @@ export async function passagesGetText(
     "indent-psalm-doxology": payload["indent-psalm-doxology"],
     "indent-using": payload["indent-using"],
     "line-length": payload["line-length"],
-    "q": payload.q,
+    "q": payload.query,
   });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKeyAuth);
-  const securityInput = secConfig == null ? {} : { apiKeyAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
@@ -98,7 +101,7 @@ export async function passagesGetText(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.apiKeyAuth,
+    securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -136,7 +139,7 @@ export async function passagesGetText(
   };
 
   const [result] = await M.match<
-    operations.GetPassageTextResponseBody,
+    components.PassageResponse,
     | errors.ErrorT
     | APIError
     | SDKValidationError
@@ -146,7 +149,7 @@ export async function passagesGetText(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetPassageTextResponseBody$inboundSchema),
+    M.json(200, components.PassageResponse$inboundSchema),
     M.jsonErr([400, 401], errors.ErrorT$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

@@ -12,7 +12,7 @@ export type GetPassageHtmlRequest = {
   /**
    * Bible passage reference (e.g., "John 3:16" or "43011016")
    */
-  q: string;
+  query: string;
   /**
    * Include passage references before passages
    */
@@ -79,46 +79,13 @@ export type GetPassageHtmlRequest = {
   divClasses?: string | undefined;
 };
 
-export type PassageMeta = {
-  canonical?: string | undefined;
-  chapterStart?: Array<number> | undefined;
-  chapterEnd?: Array<number> | undefined;
-  prevVerse?: Array<number> | undefined;
-  nextVerse?: Array<number> | undefined;
-  prevChapter?: Array<number> | undefined;
-  nextChapter?: Array<number> | undefined;
-};
-
-/**
- * Successful response
- */
-export type GetPassageHtmlResponseBody = {
-  /**
-   * The passage reference that was requested
-   */
-  query?: string | undefined;
-  /**
-   * The canonical version of the passage reference
-   */
-  canonical?: string | undefined;
-  /**
-   * Array of parsed passage references
-   */
-  parsed?: Array<Array<number>> | undefined;
-  passageMeta?: Array<PassageMeta> | undefined;
-  /**
-   * Array of HTML-formatted passage text
-   */
-  passages?: Array<string> | undefined;
-};
-
 /** @internal */
 export const GetPassageHtmlRequest$inboundSchema: z.ZodType<
   GetPassageHtmlRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  q: z.string(),
+  query: z.string(),
   "include-passage-references": z.boolean().default(true),
   "include-verse-numbers": z.boolean().default(true),
   "include-first-verse-numbers": z.boolean().default(true),
@@ -158,7 +125,7 @@ export const GetPassageHtmlRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetPassageHtmlRequest$Outbound = {
-  q: string;
+  query: string;
   "include-passage-references": boolean;
   "include-verse-numbers": boolean;
   "include-first-verse-numbers": boolean;
@@ -183,7 +150,7 @@ export const GetPassageHtmlRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPassageHtmlRequest
 > = z.object({
-  q: z.string(),
+  query: z.string(),
   includePassageReferences: z.boolean().default(true),
   includeVerseNumbers: z.boolean().default(true),
   includeFirstVerseNumbers: z.boolean().default(true),
@@ -249,165 +216,5 @@ export function getPassageHtmlRequestFromJSON(
     jsonString,
     (x) => GetPassageHtmlRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetPassageHtmlRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const PassageMeta$inboundSchema: z.ZodType<
-  PassageMeta,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  canonical: z.string().optional(),
-  chapter_start: z.array(z.number().int()).optional(),
-  chapter_end: z.array(z.number().int()).optional(),
-  prev_verse: z.array(z.number().int()).optional(),
-  next_verse: z.array(z.number().int()).optional(),
-  prev_chapter: z.array(z.number().int()).optional(),
-  next_chapter: z.array(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "chapter_start": "chapterStart",
-    "chapter_end": "chapterEnd",
-    "prev_verse": "prevVerse",
-    "next_verse": "nextVerse",
-    "prev_chapter": "prevChapter",
-    "next_chapter": "nextChapter",
-  });
-});
-
-/** @internal */
-export type PassageMeta$Outbound = {
-  canonical?: string | undefined;
-  chapter_start?: Array<number> | undefined;
-  chapter_end?: Array<number> | undefined;
-  prev_verse?: Array<number> | undefined;
-  next_verse?: Array<number> | undefined;
-  prev_chapter?: Array<number> | undefined;
-  next_chapter?: Array<number> | undefined;
-};
-
-/** @internal */
-export const PassageMeta$outboundSchema: z.ZodType<
-  PassageMeta$Outbound,
-  z.ZodTypeDef,
-  PassageMeta
-> = z.object({
-  canonical: z.string().optional(),
-  chapterStart: z.array(z.number().int()).optional(),
-  chapterEnd: z.array(z.number().int()).optional(),
-  prevVerse: z.array(z.number().int()).optional(),
-  nextVerse: z.array(z.number().int()).optional(),
-  prevChapter: z.array(z.number().int()).optional(),
-  nextChapter: z.array(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    chapterStart: "chapter_start",
-    chapterEnd: "chapter_end",
-    prevVerse: "prev_verse",
-    nextVerse: "next_verse",
-    prevChapter: "prev_chapter",
-    nextChapter: "next_chapter",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PassageMeta$ {
-  /** @deprecated use `PassageMeta$inboundSchema` instead. */
-  export const inboundSchema = PassageMeta$inboundSchema;
-  /** @deprecated use `PassageMeta$outboundSchema` instead. */
-  export const outboundSchema = PassageMeta$outboundSchema;
-  /** @deprecated use `PassageMeta$Outbound` instead. */
-  export type Outbound = PassageMeta$Outbound;
-}
-
-export function passageMetaToJSON(passageMeta: PassageMeta): string {
-  return JSON.stringify(PassageMeta$outboundSchema.parse(passageMeta));
-}
-
-export function passageMetaFromJSON(
-  jsonString: string,
-): SafeParseResult<PassageMeta, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PassageMeta$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PassageMeta' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetPassageHtmlResponseBody$inboundSchema: z.ZodType<
-  GetPassageHtmlResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  query: z.string().optional(),
-  canonical: z.string().optional(),
-  parsed: z.array(z.array(z.number().int())).optional(),
-  passage_meta: z.array(z.lazy(() => PassageMeta$inboundSchema)).optional(),
-  passages: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "passage_meta": "passageMeta",
-  });
-});
-
-/** @internal */
-export type GetPassageHtmlResponseBody$Outbound = {
-  query?: string | undefined;
-  canonical?: string | undefined;
-  parsed?: Array<Array<number>> | undefined;
-  passage_meta?: Array<PassageMeta$Outbound> | undefined;
-  passages?: Array<string> | undefined;
-};
-
-/** @internal */
-export const GetPassageHtmlResponseBody$outboundSchema: z.ZodType<
-  GetPassageHtmlResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetPassageHtmlResponseBody
-> = z.object({
-  query: z.string().optional(),
-  canonical: z.string().optional(),
-  parsed: z.array(z.array(z.number().int())).optional(),
-  passageMeta: z.array(z.lazy(() => PassageMeta$outboundSchema)).optional(),
-  passages: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    passageMeta: "passage_meta",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPassageHtmlResponseBody$ {
-  /** @deprecated use `GetPassageHtmlResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetPassageHtmlResponseBody$inboundSchema;
-  /** @deprecated use `GetPassageHtmlResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetPassageHtmlResponseBody$outboundSchema;
-  /** @deprecated use `GetPassageHtmlResponseBody$Outbound` instead. */
-  export type Outbound = GetPassageHtmlResponseBody$Outbound;
-}
-
-export function getPassageHtmlResponseBodyToJSON(
-  getPassageHtmlResponseBody: GetPassageHtmlResponseBody,
-): string {
-  return JSON.stringify(
-    GetPassageHtmlResponseBody$outboundSchema.parse(getPassageHtmlResponseBody),
-  );
-}
-
-export function getPassageHtmlResponseBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<GetPassageHtmlResponseBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetPassageHtmlResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetPassageHtmlResponseBody' from JSON`,
   );
 }

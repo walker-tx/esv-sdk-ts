@@ -6,7 +6,7 @@
 import { GetPassageHtmlRequest } from "esv-sdk/models/operations";
 
 let value: GetPassageHtmlRequest = {
-  q: "<value>",
+  query: "<value>",
 };
 ```
 
@@ -14,7 +14,7 @@ let value: GetPassageHtmlRequest = {
 
 | Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `q`                                                       | *string*                                                  | :heavy_check_mark:                                        | Bible passage reference (e.g., "John 3:16" or "43011016") |                                                           |
+| `query`                                                   | *string*                                                  | :heavy_check_mark:                                        | Bible passage reference (e.g., "John 3:16" or "43011016") |                                                           |
 | `includePassageReferences`                                | *boolean*                                                 | :heavy_minus_sign:                                        | Include passage references before passages                | true                                                      |
 | `includeVerseNumbers`                                     | *boolean*                                                 | :heavy_minus_sign:                                        | Include verse numbers                                     | true                                                      |
 | `includeFirstVerseNumbers`                                | *boolean*                                                 | :heavy_minus_sign:                                        | Include the verse number for the first verse of a chapter | true                                                      |

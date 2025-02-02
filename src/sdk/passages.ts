@@ -5,6 +5,7 @@
 import { passagesGetHtml } from "../funcs/passagesGetHtml.js";
 import { passagesGetText } from "../funcs/passagesGetText.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -14,11 +15,13 @@ export class Passages extends ClientSDK {
    *
    * @remarks
    * Returns Bible passage text with HTML formatting
+   *
+   * @see {@link https://api.esv.org/docs/passage-html/} - Esv.org API Docs for `/v3/passages/html`
    */
   async getHtml(
     request: operations.GetPassageHtmlRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPassageHtmlResponseBody> {
+  ): Promise<components.PassageResponse> {
     return unwrapAsync(passagesGetHtml(
       this,
       request,
@@ -31,11 +34,13 @@ export class Passages extends ClientSDK {
    *
    * @remarks
    * Returns Bible passage text based on the provided query parameters
+   *
+   * @see {@link https://api.esv.org/docs/passage-text/} - Esv.org API Docs for `/v3/passages/text`
    */
   async getText(
     request: operations.GetPassageTextRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPassageTextResponseBody> {
+  ): Promise<components.PassageResponse> {
     return unwrapAsync(passagesGetText(
       this,
       request,

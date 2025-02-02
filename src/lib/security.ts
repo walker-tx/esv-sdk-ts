@@ -237,7 +237,7 @@ export function resolveGlobalSecurity(
       {
         fieldName: "Authorization",
         type: "apiKey:header",
-        value: security?.apiKeyAuth ?? env().ESV_API_KEY_AUTH,
+        value: security?.apiKey ?? env().ESV_API_KEY,
       },
     ],
   );

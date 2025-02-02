@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
-  docChecksum: 86e31b8f55c0b83c79d30dc29690130e
+  docChecksum: f659c98012075467b3538557faee5583
   docVersion: 1.0.0
   speakeasyVersion: 1.481.1
   generationVersion: 2.500.5
-  releaseVersion: 0.0.2
-  configChecksum: d1ccbfa8ce4f4dc2214d9593ca9278f9
+  releaseVersion: 0.0.4
+  configChecksum: 409e4ac49e03e661b2e28a2bb6f354d5
   published: true
 features:
   typescript:
@@ -35,15 +35,13 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
+  - docs/models/components/passagemeta.md
+  - docs/models/components/passageresponse.md
   - docs/models/components/security.md
   - docs/models/errors/errort.md
   - docs/models/operations/getpassagehtmlrequest.md
-  - docs/models/operations/getpassagehtmlresponsebody.md
-  - docs/models/operations/getpassagetextpassagemeta.md
   - docs/models/operations/getpassagetextrequest.md
-  - docs/models/operations/getpassagetextresponsebody.md
   - docs/models/operations/indentusing.md
-  - docs/models/operations/passagemeta.md
   - docs/sdks/esv/README.md
   - docs/sdks/passages/README.md
   - eslint.config.mjs
@@ -73,6 +71,8 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/models/components/index.ts
+  - src/models/components/passagemeta.ts
+  - src/models/components/passageresponse.ts
   - src/models/components/security.ts
   - src/models/errors/apierror.ts
   - src/models/errors/error.ts
