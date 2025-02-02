@@ -2,14 +2,18 @@ openapi: 3.1.0
 
 info:
   title: ESV.org API
+  summary: A convenient way to fetch content from ESV.org.
   description: >- 
     The ESV API provides access to the ESV text, with a customizable presentation in 
-    multiple formats. You will need an HTTP client in your programming language of 
-    choice to use the API.
+    multiple formats. 
   version: 1.0.0
   contact:
     name: API Support
     email: support@example.com
+
+externalDocs:
+  url: https://api.esv.org/
+  description: ESV API Website
 
 servers:
   - url: "https://api.esv.org/v3/"

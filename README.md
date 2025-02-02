@@ -12,18 +12,14 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 
 <br /><br />
 
-## Summary
-
-ESV.org API: The ESV API provides access to the ESV text, with a customizable presentation in  multiple formats. You will need an HTTP client in your programming language of  choice to use the API.
-
-This is not an official SDK.
-
-<!-- End Summary [summary] -->
-
 <!-- Start Summary [summary] -->
 ## Summary
 
-ESV.org API: The ESV API provides access to the ESV text, with a customizable presentation in  multiple formats. You will need an HTTP client in your programming language of  choice to use the API.
+ESV.org API: A convenient way to fetch content from ESV.org.
+
+The ESV API provides access to the ESV text, with a customizable presentation in  multiple formats. 
+
+For more information about the API: [ESV API Website](https://api.esv.org/)
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->

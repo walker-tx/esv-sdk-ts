@@ -1,7 +1,7 @@
 {
   "name": "esv-sdk",
-  "version": "0.0.4",
-  "author": "Speakeasy",
+  "version": "0.0.5",
+  "author": "Walker Lockard",
   "type": "module",
   "tshy": {
     "sourceDialects": [
