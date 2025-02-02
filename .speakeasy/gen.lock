@@ -5,8 +5,10 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.481.1
   generationVersion: 2.500.5
-  releaseVersion: 0.0.5
-  configChecksum: f9fe67218623501ee0ec932d8d568484
+  releaseVersion: 0.0.6
+  configChecksum: 71609c9d853456dcb3197bdad750dc1c
+  repoURL: https://github.com/walker-tx/esv-sdk-ts.git
+  installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
 features:
   typescript:
