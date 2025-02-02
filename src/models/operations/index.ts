@@ -4,3 +4,4 @@
 
 export * from "./getpassagehtml.js";
 export * from "./getpassagetext.js";
+export * from "./searchpassages.js";

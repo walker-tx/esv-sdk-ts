@@ -26,6 +26,98 @@ tags:
   - name: Passages
 
 paths:
+  /passage/search/:
+    get:
+      summary: Search Bible passages
+      description: Returns search results for Bible passages based on the provided query
+      externalDocs: 
+        url: https://api.esv.org/docs/passage-search/
+        description: Esv.org API Docs for `/v3/passage/search`
+      operationId: searchPassages
+      tags: [Passages]
+      x-speakeasy-name-override: search
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+        outputs:
+          numPages: $.total_pages
+      parameters:
+        - name: q
+          x-speakeasy-name-override: query
+          in: query
+          required: true
+          description: The text to search for
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          description: Number of results to return per page
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: page
+          in: query
+          description: Page number to return
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    description: Current page number
+                  total_pages:
+                    type: integer
+                    description: Total number of pages
+                  total_results:
+                    type: integer
+                    description: Total number of results
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reference:
+                          type: string
+                          description: The passage reference
+                        content:
+                          type: string
+                          description: The matching passage content
+                        verses:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              verse:
+                                type: string
+                                description: Verse reference
+                              text:
+                                type: string
+                                description: Verse text
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /passage/html/:
     get:
       summary: Get Bible passage HTML

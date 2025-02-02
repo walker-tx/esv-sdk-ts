@@ -32,6 +32,7 @@ For more information about the API: [ESV API Website](https://api.esv.org/)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
+  * [Pagination](#pagination)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -98,12 +99,14 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -131,12 +134,14 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -153,6 +158,7 @@ run();
 
 ### [passages](docs/sdks/passages/README.md)
 
+* [search](docs/sdks/passages/README.md#search) - Search Bible passages
 * [getHtml](docs/sdks/passages/README.md#gethtml) - Get Bible passage HTML
 * [getText](docs/sdks/passages/README.md#gettext) - Get Bible passage text
 
@@ -176,9 +182,45 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`passagesGetHtml`](docs/sdks/passages/README.md#gethtml) - Get Bible passage HTML
 - [`passagesGetText`](docs/sdks/passages/README.md#gettext) - Get Bible passage text
+- [`passagesSearch`](docs/sdks/passages/README.md#search) - Search Bible passages
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+Here's an example of one such pagination call:
+
+```typescript
+import { Esv } from "esv-sdk";
+
+const esv = new Esv({
+  apiKey: process.env["ESV_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await esv.passages.search({
+    query: "<value>",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -194,8 +236,8 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   }, {
     retries: {
       strategy: "backoff",
@@ -209,8 +251,10 @@ async function run() {
     },
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -236,12 +280,14 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -252,7 +298,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `getHtml` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `search` method may throw the following errors:
 
 | Error Type      | Status Code | Content Type     |
 | --------------- | ----------- | ---------------- |
@@ -272,12 +318,14 @@ const esv = new Esv({
 async function run() {
   let result;
   try {
-    result = await esv.passages.getHtml({
-      query: "John 1:1",
+    result = await esv.passages.search({
+      query: "<value>",
     });
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+      // Handle the page
+      console.log(page);
+    }
   } catch (err) {
     switch (true) {
       // The server response does not match the expected SDK schema
@@ -333,12 +381,14 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();

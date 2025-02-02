@@ -2,8 +2,8 @@ speakeasyVersion: 1.481.1
 sources:
     ESV.org API:
         sourceNamespace: esv-org-api
-        sourceRevisionDigest: sha256:849b283fa68f6b5e1ed31b3941b8273fb3c549e8ee30373d6bbb1b7b39ba90e7
-        sourceBlobDigest: sha256:e2ae6b629f36cb3d18bed8e3e9070c8f8405a07a8ad22a31638bdd3ed41a9ebc
+        sourceRevisionDigest: sha256:108ac1f81f52f573e41bd3d71b598c1ed7fe29f734197aff76a9a94dc064927f
+        sourceBlobDigest: sha256:0fbb407f30d8988e1e8b1f25136aa2f8ab5003b7e939030146952bc39492dd42
         tags:
             - latest
             - 1.0.0
@@ -11,10 +11,10 @@ targets:
     esv:
         source: ESV.org API
         sourceNamespace: esv-org-api
-        sourceRevisionDigest: sha256:849b283fa68f6b5e1ed31b3941b8273fb3c549e8ee30373d6bbb1b7b39ba90e7
-        sourceBlobDigest: sha256:e2ae6b629f36cb3d18bed8e3e9070c8f8405a07a8ad22a31638bdd3ed41a9ebc
+        sourceRevisionDigest: sha256:108ac1f81f52f573e41bd3d71b598c1ed7fe29f734197aff76a9a94dc064927f
+        sourceBlobDigest: sha256:0fbb407f30d8988e1e8b1f25136aa2f8ab5003b7e939030146952bc39492dd42
         codeSamplesNamespace: esv-org-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:a06143c781620e32e3167218124720137386e5f1b0a1e1712b02981d32d1d20a
+        codeSamplesRevisionDigest: sha256:bdd7234ad9d41c5029038ecc5add9d596f7d2de440d13df677e58281dc6f10ed
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
-  docChecksum: 67729f2e749b3a303c46936c45c3d4d5
+  docChecksum: 9ac53df9244b17ee828d70278d2a3f97
   docVersion: 1.0.0
   speakeasyVersion: 1.481.1
   generationVersion: 2.500.5
@@ -21,6 +21,7 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     nameOverrides: 2.81.2
+    pagination: 2.82.8
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -38,6 +39,11 @@ generatedFiles:
   - docs/models/operations/getpassagehtmlrequest.md
   - docs/models/operations/getpassagetextrequest.md
   - docs/models/operations/indentusing.md
+  - docs/models/operations/results.md
+  - docs/models/operations/searchpassagesrequest.md
+  - docs/models/operations/searchpassagesresponse.md
+  - docs/models/operations/searchpassagesresponsebody.md
+  - docs/models/operations/verses.md
   - docs/sdks/esv/README.md
   - docs/sdks/passages/README.md
   - eslint.config.mjs
@@ -46,6 +52,7 @@ generatedFiles:
   - src/core.ts
   - src/funcs/passagesGetHtml.ts
   - src/funcs/passagesGetText.ts
+  - src/funcs/passagesSearch.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -78,6 +85,7 @@ generatedFiles:
   - src/models/operations/getpassagehtml.ts
   - src/models/operations/getpassagetext.ts
   - src/models/operations/index.ts
+  - src/models/operations/searchpassages.ts
   - src/sdk/index.ts
   - src/sdk/passages.ts
   - src/sdk/sdk.ts
@@ -501,5 +509,17 @@ examples:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
         "200": {}
+  searchPassages:
+    speakeasy-default-search-passages:
+      parameters:
+        query:
+          q: "<value>"
+          page-size: 20
+          page: 1
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
 examplesVersion: 1.0.0
 generatedTests: {}

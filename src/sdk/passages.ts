@@ -4,12 +4,35 @@
 
 import { passagesGetHtml } from "../funcs/passagesGetHtml.js";
 import { passagesGetText } from "../funcs/passagesGetText.js";
+import { passagesSearch } from "../funcs/passagesSearch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Passages extends ClientSDK {
+  /**
+   * Search Bible passages
+   *
+   * @remarks
+   * Returns search results for Bible passages based on the provided query
+   *
+   * @see {@link https://api.esv.org/docs/passage-search/} - Esv.org API Docs for `/v3/passage/search`
+   */
+  async search(
+    request: operations.SearchPassagesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.SearchPassagesResponse, { page: number }>
+  > {
+    return unwrapResultIterator(passagesSearch(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Get Bible passage HTML
    *

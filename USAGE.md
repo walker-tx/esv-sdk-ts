@@ -7,12 +7,14 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.getHtml({
-    query: "John 1:1",
+  const result = await esv.passages.search({
+    query: "<value>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
