@@ -5,8 +5,9 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.481.1
   generationVersion: 2.500.5
-  releaseVersion: 0.0.1
-  configChecksum: d7178c61a36454565e0284db323dfa35
+  releaseVersion: 0.0.2
+  configChecksum: d1ccbfa8ce4f4dc2214d9593ca9278f9
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -118,6 +119,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     CompactNotation:
       parameters:
         query:
@@ -141,6 +143,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     ChapterRange:
       parameters:
         query:
@@ -164,6 +167,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     NumericalEncoding:
       parameters:
         query:
@@ -187,6 +191,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     DigitalRange:
       parameters:
         query:
@@ -210,6 +215,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     MultiReference:
       parameters:
         query:
@@ -233,6 +239,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     StructuredDigital:
       parameters:
         query:
@@ -256,6 +263,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     "":
       parameters:
         query:
@@ -279,6 +287,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
   getPassageText:
     StandardReference:
       parameters:
@@ -306,6 +315,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     CompactNotation:
       parameters:
         query:
@@ -332,6 +342,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     ChapterRange:
       parameters:
         query:
@@ -358,6 +369,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     NumericalEncoding:
       parameters:
         query:
@@ -384,6 +396,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     DigitalRange:
       parameters:
         query:
@@ -410,6 +423,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     MultiReference:
       parameters:
         query:
@@ -436,6 +450,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     StructuredDigital:
       parameters:
         query:
@@ -462,6 +477,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
     "":
       parameters:
         query:
@@ -488,5 +504,6 @@ examples:
       responses:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
+        "200": {}
 examplesVersion: 1.0.0
 generatedTests: {}
