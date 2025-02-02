@@ -10,6 +10,9 @@ targets:
     esv:
         target: typescript
         source: ESV.org API
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/walker/esv/esv-org-api-typescript-code-samples
