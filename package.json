@@ -1,6 +1,6 @@
 {
   "name": "esv-sdk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Walker Lockard",
   "type": "module",
   "tshy": {
@@ -19,6 +19,10 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walker-tx/esv-sdk-ts.git"
+  },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tshy",
