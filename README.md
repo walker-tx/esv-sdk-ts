@@ -99,14 +99,12 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.search({
-    query: "<value>",
+  const result = await esv.passages.getHtml({
+    query: "John 1:1",
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -134,14 +132,12 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.search({
-    query: "<value>",
+  const result = await esv.passages.getHtml({
+    query: "John 1:1",
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -158,8 +154,9 @@ run();
 
 ### [passages](docs/sdks/passages/README.md)
 
-* [search](docs/sdks/passages/README.md#search) - Search Bible passages
 * [getHtml](docs/sdks/passages/README.md#gethtml) - Get Bible passage HTML
+* [search](docs/sdks/passages/README.md#search) - Search Bible passages
+* [getAudio](docs/sdks/passages/README.md#getaudio) - Get Bible passage audio
 * [getText](docs/sdks/passages/README.md#gettext) - Get Bible passage text
 
 </details>
@@ -180,6 +177,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`passagesGetAudio`](docs/sdks/passages/README.md#getaudio) - Get Bible passage audio
 - [`passagesGetHtml`](docs/sdks/passages/README.md#gethtml) - Get Bible passage HTML
 - [`passagesGetText`](docs/sdks/passages/README.md#gettext) - Get Bible passage text
 - [`passagesSearch`](docs/sdks/passages/README.md#search) - Search Bible passages
@@ -236,8 +234,8 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.search({
-    query: "<value>",
+  const result = await esv.passages.getHtml({
+    query: "John 1:1",
   }, {
     retries: {
       strategy: "backoff",
@@ -251,10 +249,8 @@ async function run() {
     },
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -280,14 +276,12 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.search({
-    query: "<value>",
+  const result = await esv.passages.getHtml({
+    query: "John 1:1",
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -298,7 +292,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `search` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `getHtml` method may throw the following errors:
 
 | Error Type      | Status Code | Content Type     |
 | --------------- | ----------- | ---------------- |
@@ -318,14 +312,12 @@ const esv = new Esv({
 async function run() {
   let result;
   try {
-    result = await esv.passages.search({
-      query: "<value>",
+    result = await esv.passages.getHtml({
+      query: "John 1:1",
     });
 
-    for await (const page of result) {
-      // Handle the page
-      console.log(page);
-    }
+    // Handle the result
+    console.log(result);
   } catch (err) {
     switch (true) {
       // The server response does not match the expected SDK schema
@@ -381,14 +373,12 @@ const esv = new Esv({
 });
 
 async function run() {
-  const result = await esv.passages.search({
-    query: "<value>",
+  const result = await esv.passages.getHtml({
+    query: "John 1:1",
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();

@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { EsvCore } from "esv-sdk/core.js";
-import { passagesSearch } from "esv-sdk/funcs/passagesSearch.js";
+import { passagesGetHtml } from "esv-sdk/funcs/passagesGetHtml.js";
 import { SDKValidationError } from "esv-sdk/models/errors/sdkvalidationerror.js";
 
 // Use `EsvCore` for best tree-shaking performance.
@@ -30,8 +30,8 @@ const esv = new EsvCore({
 });
 
 async function run() {
-  const res = await passagesSearch(esv, {
-    query: "<value>",
+  const res = await passagesGetHtml(esv, {
+    query: "John 1:1",
   });
 
   switch (true) {
@@ -53,10 +53,8 @@ async function run() {
 
   const { value: result } = res;
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();

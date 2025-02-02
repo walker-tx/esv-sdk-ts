@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
-  docChecksum: 9ac53df9244b17ee828d70278d2a3f97
+  docChecksum: 96f346615800012922884025afaa105c
   docVersion: 1.0.0
   speakeasyVersion: 1.481.1
   generationVersion: 2.500.5
@@ -14,6 +14,7 @@ features:
     constsAndDefaults: 0.1.11
     core: 3.18.22
     defaultEnabledRetries: 0.1.0
+    downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.12
@@ -36,6 +37,7 @@ generatedFiles:
   - docs/models/components/passageresponse.md
   - docs/models/components/security.md
   - docs/models/errors/errort.md
+  - docs/models/operations/getpassageaudiorequest.md
   - docs/models/operations/getpassagehtmlrequest.md
   - docs/models/operations/getpassagetextrequest.md
   - docs/models/operations/indentusing.md
@@ -50,6 +52,7 @@ generatedFiles:
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/passagesGetAudio.ts
   - src/funcs/passagesGetHtml.ts
   - src/funcs/passagesGetText.ts
   - src/funcs/passagesSearch.ts
@@ -82,6 +85,7 @@ generatedFiles:
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/operations/getpassageaudio.ts
   - src/models/operations/getpassagehtml.ts
   - src/models/operations/getpassagetext.ts
   - src/models/operations/index.ts
@@ -519,6 +523,70 @@ examples:
       responses:
         "200":
           application/json: {}
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+  getPassageAudio:
+    StandardReference:
+      parameters:
+        query:
+          q: "John 1:1"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    CompactNotation:
+      parameters:
+        query:
+          q: "jn11.35"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    ChapterRange:
+      parameters:
+        query:
+          q: "Genesis 1-3"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    NumericalEncoding:
+      parameters:
+        query:
+          q: "43011035"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    DigitalRange:
+      parameters:
+        query:
+          q: "01001001-01011032"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    MultiReference:
+      parameters:
+        query:
+          q: "John1.1;Genesis1.1"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    StructuredDigital:
+      parameters:
+        query:
+          q: "19001001-19001006,19003001-19003008"
+      responses:
+        "200":
+          audio/mpeg: "x-file: example.file"
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
 examplesVersion: 1.0.0
