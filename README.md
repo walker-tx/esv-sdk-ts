@@ -1,5 +1,8 @@
 # Esv.org TypeScript SDK
 
+> [!IMPORTANT]  
+> This is not an official SDK developed by Esv.org.
+
 Developer-friendly & type-safe Typescript SDK specifically catered to leverage *Esv.org* API.
 
 <div align="left">
