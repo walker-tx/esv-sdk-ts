@@ -29,17 +29,6 @@ For more information about the API: [ESV API Website](https://api.esv.org/)
 <!-- $toc-max-depth=2 -->
 * [Esv.org TypeScript SDK](#esvorg-typescript-sdk)
   * [SDK Installation](#sdk-installation)
-  * [Requirements](#requirements)
-  * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Standalone functions](#standalone-functions)
-  * [Pagination](#pagination)
-  * [Retries](#retries)
-  * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-  * [Custom HTTP Client](#custom-http-client)
-  * [Debugging](#debugging)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -80,6 +69,70 @@ yarn add esv-sdk zod
 
 > [!NOTE]
 > This package is published with CommonJS and ES Modules (ESM) support.
+
+
+### Model Context Protocol (MCP) Server
+
+This SDK is also an installable MCP server where the various SDK methods are
+exposed as tools that can be invoked by AI applications.
+
+> Node.js v20 or greater is required to run the MCP server.
+
+<details>
+<summary>Claude installation steps</summary>
+
+Add the following server definition to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "Esv": {
+      "command": "npx",
+      "args": ["-y", "--", "esv-sdk", "mcp", "start"],
+      "env": {
+        "ESV_API_KEY": "..."
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor installation steps</summary>
+
+1. Create a shell script called `mcp-esv.sh` with the following content:
+
+    ```sh
+    #!/bin/sh
+     
+    export ESV_API_KEY="..."
+
+    exec npx -y -- esv-sdk mcp start "$@"
+    ```
+
+2. Then make it executable with the following command:
+
+    ```sh
+    chmod +x mcp-esv.sh
+    ```
+
+3. In Cursor, `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
+
+    | Field   | Value |
+    | ------- | ----- |
+    | Name    | Esv |
+    | Type    | `command` |
+    | Command | `/path/to/mcp-esv.sh` |
+
+</details>
+
+For a full list of server arguments, run:
+
+```sh
+npx -y -- esv-sdk mcp start --help
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -365,7 +418,7 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Esv } from "esv-sdk";
 
