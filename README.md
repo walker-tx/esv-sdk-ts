@@ -29,6 +29,17 @@ For more information about the API: [ESV API Website](https://api.esv.org/)
 <!-- $toc-max-depth=2 -->
 * [Esv.org TypeScript SDK](#esvorg-typescript-sdk)
   * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Authentication](#authentication)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Standalone functions](#standalone-functions)
+  * [Pagination](#pagination)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Debugging](#debugging)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -88,10 +99,12 @@ Add the following server definition to your `claude_desktop_config.json` file:
   "mcpServers": {
     "Esv": {
       "command": "npx",
-      "args": ["-y", "--", "esv-sdk", "mcp", "start"],
-      "env": {
-        "ESV_API_KEY": "..."
-      }
+      "args": [
+        "-y", "--package", "esv-sdk",
+        "--",
+        "mcp", "start",
+        "--api-key", "..."
+      ]
     }
   }
 }
@@ -102,36 +115,21 @@ Add the following server definition to your `claude_desktop_config.json` file:
 <details>
 <summary>Cursor installation steps</summary>
 
-1. Create a shell script called `mcp-esv.sh` with the following content:
+Go to `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
 
-    ```sh
-    #!/bin/sh
-     
-    export ESV_API_KEY="..."
-
-    exec npx -y -- esv-sdk mcp start "$@"
-    ```
-
-2. Then make it executable with the following command:
-
-    ```sh
-    chmod +x mcp-esv.sh
-    ```
-
-3. In Cursor, `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
-
-    | Field   | Value |
-    | ------- | ----- |
-    | Name    | Esv |
-    | Type    | `command` |
-    | Command | `/path/to/mcp-esv.sh` |
+- Name: Esv
+- Type: `command`
+- Command:
+```sh
+npx -y --package esv-sdk -- mcp start --api-key ... 
+```
 
 </details>
 
 For a full list of server arguments, run:
 
 ```sh
-npx -y -- esv-sdk mcp start --help
+npx -y --package esv-sdk -- mcp start --help
 ```
 <!-- End SDK Installation [installation] -->
 

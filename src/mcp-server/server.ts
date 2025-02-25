@@ -17,14 +17,16 @@ export function createMCPServer(deps: {
   logger: ConsoleLogger;
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
-  serverIdx?: SDKOptions["serverIdx"];
+  apiKey?: SDKOptions["apiKey"] | undefined;
+  serverIdx?: SDKOptions["serverIdx"] | undefined;
 }) {
   const server = new McpServer({
     name: "Esv",
-    version: "0.1.0",
+    version: "0.2.0",
   });
 
   const client = new EsvCore({
+    apiKey: deps.apiKey,
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
   });
