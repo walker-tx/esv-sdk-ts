@@ -207,7 +207,7 @@ async function $do(
     const page = request?.page ?? 1;
     const nextPage = page + 1;
     const numPages = dlv(responseData, "total_pages");
-    if (numPages == null || numPages <= page) {
+    if (typeof numPages !== "number" || numPages <= page) {
       return { next: () => null };
     }
 

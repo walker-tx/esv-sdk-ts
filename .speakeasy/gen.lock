@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
-  docChecksum: 96f346615800012922884025afaa105c
+  docChecksum: 02556cbc5bba40bb35a67b6e6d390f1d
   docVersion: 1.0.0
-  speakeasyVersion: 1.503.0
-  generationVersion: 2.526.1
-  releaseVersion: 0.2.0
-  configChecksum: b47e64ab825052e8447574c3a92fc89a
+  speakeasyVersion: 1.509.1
+  generationVersion: 2.539.1
+  releaseVersion: 0.3.0
+  configChecksum: cbc14e8ea1e8c7da89fa128e413af909
   repoURL: https://github.com/walker-tx/esv-sdk-ts.git
   installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.1
+    core: 3.21.3
     defaultEnabledRetries: 0.1.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
@@ -23,9 +23,9 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.3.0
+    mcpServer: 0.4.1
     nameOverrides: 2.81.2
-    pagination: 2.82.8
+    pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0

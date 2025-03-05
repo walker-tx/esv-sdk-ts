@@ -15,6 +15,7 @@ import { tool$passagesSearch } from "./tools/passagesSearch.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
+  allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   apiKey?: SDKOptions["apiKey"] | undefined;
@@ -22,7 +23,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Esv",
-    version: "0.2.0",
+    version: "0.3.0",
   });
 
   const client = new EsvCore({
@@ -31,7 +32,14 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
   const scopes = new Set(deps.scopes ?? mcpScopes);
-  const tool = createRegisterTool(deps.logger, server, client, scopes);
+  const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
+  const tool = createRegisterTool(
+    deps.logger,
+    server,
+    client,
+    scopes,
+    allowedTools,
+  );
 
   tool(tool$passagesGetHtml);
   tool(tool$passagesSearch);
