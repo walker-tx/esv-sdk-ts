@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
-  docChecksum: 02556cbc5bba40bb35a67b6e6d390f1d
+  docChecksum: 96f346615800012922884025afaa105c
   docVersion: 1.0.0
   speakeasyVersion: 1.509.1
   generationVersion: 2.539.1
-  releaseVersion: 0.3.0
-  configChecksum: cbc14e8ea1e8c7da89fa128e413af909
+  releaseVersion: 0.3.1
+  configChecksum: 02f4936003eedad9a353fa3e4f11f09a
   repoURL: https://github.com/walker-tx/esv-sdk-ts.git
   installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
