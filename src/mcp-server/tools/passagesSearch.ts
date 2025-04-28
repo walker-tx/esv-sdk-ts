@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$passagesSearch: ToolDefinition<typeof args> = {
-  name: "passages_search",
+  name: "passages-search",
   description: `Search Bible passages
 
 Returns search results for Bible passages based on the provided query`,

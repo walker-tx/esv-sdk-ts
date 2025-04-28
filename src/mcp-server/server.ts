@@ -6,7 +6,12 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { EsvCore } from "../core.js";
 import { SDKOptions } from "../lib/config.js";
 import type { ConsoleLogger } from "./console-logger.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { createRegisterPrompt } from "./prompts.js";
+import {
+  createRegisterResource,
+  createRegisterResourceTemplate,
+} from "./resources.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$passagesGetAudio } from "./tools/passagesGetAudio.js";
 import { tool$passagesGetHtml } from "./tools/passagesGetHtml.js";
@@ -23,7 +28,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Esv",
-    version: "0.3.1",
+    version: "0.4.0",
   });
 
   const client = new EsvCore({
@@ -31,7 +36,9 @@ export function createMCPServer(deps: {
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
   });
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+
+  const scopes = new Set(deps.scopes);
+
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(
     deps.logger,
@@ -40,6 +47,16 @@ export function createMCPServer(deps: {
     scopes,
     allowedTools,
   );
+  const resource = createRegisterResource(deps.logger, server, client, scopes);
+  const resourceTemplate = createRegisterResourceTemplate(
+    deps.logger,
+    server,
+    client,
+    scopes,
+  );
+  const prompt = createRegisterPrompt(deps.logger, server, client, scopes);
+  const register = { tool, resource, resourceTemplate, prompt };
+  void register; // suppress unused warnings
 
   tool(tool$passagesGetHtml);
   tool(tool$passagesSearch);

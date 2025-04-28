@@ -1,6 +1,6 @@
 {
   "name": "esv-sdk",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Walker Lockard",
   "description": "An SDK for the ESV API, with support for React Query and MCP.",
   "type": "module",
@@ -34,7 +34,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "zod": ">= 3"
   },
   "peerDependenciesMeta": {
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "@stricli/core": "^1.1.1",
     "@types/express": "^4.17.21",
     "bun": "^1.2.2",
