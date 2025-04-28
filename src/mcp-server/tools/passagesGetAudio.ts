@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$passagesGetAudio: ToolDefinition<typeof args> = {
-  name: "passages_get-audio",
+  name: "passages-get-audio",
   description: `Get Bible passage audio
 
 Returns audio file for Bible passages based on the provided query`,

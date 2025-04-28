@@ -7,7 +7,7 @@ Character to use for indentation
 ```typescript
 import { IndentUsing } from "esv-sdk/models/operations";
 
-let value: IndentUsing = "tab";
+let value: IndentUsing = "space";
 ```
 
 ## Values

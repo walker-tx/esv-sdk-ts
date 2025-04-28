@@ -28,13 +28,15 @@
     "url": "https://github.com/walker-tx/esv-sdk-ts.git"
   },
   "scripts": {
+    "test": "vitest run src --reporter=junit --outputFile=.speakeasy/reports/tests.xml --reporter=default",
+    "check": "npm run test && npm run lint",
     "lint": "eslint --cache --max-warnings=0 src",
     "build:mcp": "bun src/mcp-server/build.mts",
     "build": "npm run build:mcp && tshy",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "zod": ">= 3"
   },
   "peerDependenciesMeta": {
@@ -44,9 +46,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "@stricli/core": "^1.1.1",
     "@types/express": "^4.17.21",
+    "@types/node": "^18.19.3",
     "bun": "^1.2.2",
     "bun-types": "^1.2.2",
     "eslint": "^9.19.0",
@@ -55,6 +58,7 @@
     "tshy": "^2.0.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.22.0",
+    "vitest": "^3.0.2",
     "zod": "^3.23.4"
   },
   "dependencies": {},

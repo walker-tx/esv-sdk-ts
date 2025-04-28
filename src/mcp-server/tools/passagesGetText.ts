@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$passagesGetText: ToolDefinition<typeof args> = {
-  name: "passages_get-text",
+  name: "passages-get-text",
   description: `Get Bible passage text
 
 Returns Bible passage text based on the provided query parameters`,

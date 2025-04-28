@@ -1,4 +1,4 @@
-speakeasyVersion: 1.509.1
+speakeasyVersion: 1.535.1
 sources:
     ESV.org API:
         sourceNamespace: esv-org-api
@@ -13,8 +13,6 @@ targets:
         sourceNamespace: esv-org-api
         sourceRevisionDigest: sha256:fba8de0bba460789a5571fd1c99efb511d4766fb34a88dea4b5486b88a9aca4e
         sourceBlobDigest: sha256:aa45a5cd72f8b25ef3d411e18de9bdf59ec407dc833b577731a8a09e6722977c
-        codeSamplesNamespace: esv-org-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:065f5ce1203703ecd850c7da1132b81b64542940630ce4410808a4d3d6b30bdf
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -37,3 +35,5 @@ workflow:
                 labelOverride:
                     fixedValue: Typescript (SDK)
                 blocking: false
+            testing:
+                enabled: true

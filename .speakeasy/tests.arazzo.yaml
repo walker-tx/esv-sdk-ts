@@ -1,0 +1,1160 @@
+arazzo: 1.0.1
+info:
+  title: Test Suite
+  summary: Created from openapi.yaml
+  version: 0.0.1
+sourceDescriptions:
+  - name: openapi.yaml
+    url: https://TBD.com
+    type: openapi
+workflows:
+  - workflowId: getPassageHtml-StandardReference
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: John 1:1
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-CompactNotation
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: jn11.35
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-ChapterRange
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: Genesis 1-3
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-NumericalEncoding
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: "43011035"
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-DigitalRange
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: 01001001-01011032
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-MultiReference
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: John1.1;Genesis1.1
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml-StructuredDigital
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: 19001001-19001006,19003001-19003008
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageHtml
+    steps:
+      - stepId: test
+        operationId: getPassageHtml
+        parameters:
+          - name: q
+            in: query
+            value: <value>
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: include-css-link
+            in: query
+            value: true
+          - name: inline-styles
+            in: query
+            value: false
+          - name: wrapping-div
+            in: query
+            value: true
+          - name: div-classes
+            in: query
+            value: esv
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: searchPassages
+    steps:
+      - stepId: test
+        operationId: searchPassages
+        parameters:
+          - name: q
+            in: query
+            value: <value>
+          - name: page-size
+            in: query
+            value: 20
+          - name: page
+            in: query
+            value: 1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-StandardReference
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: John 1:1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-CompactNotation
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: jn11.35
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-ChapterRange
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: Genesis 1-3
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-NumericalEncoding
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: "43011035"
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-DigitalRange
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: 01001001-01011032
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-MultiReference
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: John1.1;Genesis1.1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageAudio-StructuredDigital
+    steps:
+      - stepId: test
+        operationId: getPassageAudio
+        parameters:
+          - name: q
+            in: query
+            value: 19001001-19001006,19003001-19003008
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == audio/mpeg
+          - context: $response.body
+            condition: |
+              "x-file: example.file"
+            type: simple
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-StandardReference
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: John 1:1
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-CompactNotation
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: jn11.35
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-ChapterRange
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: Genesis 1-3
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-NumericalEncoding
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: "43011035"
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-DigitalRange
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: 01001001-01011032
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-MultiReference
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: John1.1;Genesis1.1
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText-StructuredDigital
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: 19001001-19001006,19003001-19003008
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
+  - workflowId: getPassageText
+    steps:
+      - stepId: test
+        operationId: getPassageText
+        parameters:
+          - name: q
+            in: query
+            value: <value>
+          - name: include-passage-references
+            in: query
+            value: true
+          - name: include-verse-numbers
+            in: query
+            value: true
+          - name: include-first-verse-numbers
+            in: query
+            value: true
+          - name: include-footnotes
+            in: query
+            value: true
+          - name: include-footnote-body
+            in: query
+            value: true
+          - name: include-headings
+            in: query
+            value: true
+          - name: include-short-copyright
+            in: query
+            value: false
+          - name: include-copyright
+            in: query
+            value: false
+          - name: include-passage-horizontal-lines
+            in: query
+            value: false
+          - name: include-heading-horizontal-lines
+            in: query
+            value: false
+          - name: horizontal-line-length
+            in: query
+            value: 55
+          - name: include-selahs
+            in: query
+            value: true
+          - name: indent-using
+            in: query
+            value: space
+          - name: indent-paragraphs
+            in: query
+            value: 2
+          - name: indent-poetry
+            in: query
+            value: 2
+          - name: indent-poetry-lines
+            in: query
+            value: 4
+          - name: indent-declares
+            in: query
+            value: 40
+          - name: indent-psalm-doxology
+            in: query
+            value: 30
+          - name: line-length
+            in: query
+            value: 0
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Passages
