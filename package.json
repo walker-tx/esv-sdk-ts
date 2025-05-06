@@ -1,6 +1,6 @@
 {
   "name": "esv-sdk",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Walker Lockard",
   "description": "An SDK for the ESV API, with support for React Query and MCP.",
   "type": "module",
