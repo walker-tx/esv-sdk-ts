@@ -5,9 +5,7 @@
 ```typescript
 import { SearchPassagesResponse } from "esv-sdk/models/operations";
 
-let value: SearchPassagesResponse = {
-  result: {},
-};
+let value: SearchPassagesResponse = {};
 ```
 
 ## Fields

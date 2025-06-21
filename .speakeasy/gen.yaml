@@ -7,6 +7,7 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
@@ -22,7 +23,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.3.3
+  version: 0.4.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -30,7 +31,9 @@ typescript:
   additionalPackageJSON:
     description: An SDK for the ESV API, with support for React Query and MCP.
   author: Walker Lockard
+  baseErrorName: EsvError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: APIError
   enableCustomCodeRegions: false
   enableMCPServer: true
