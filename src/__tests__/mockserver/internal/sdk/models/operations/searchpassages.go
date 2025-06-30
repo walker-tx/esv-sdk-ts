@@ -48,50 +48,50 @@ func (o *SearchPassagesRequest) GetPage() *int64 {
 	return o.Page
 }
 
-type Verses struct {
+type Verse struct {
 	// Verse reference
 	Verse *string `json:"verse,omitempty"`
 	// Verse text
 	Text *string `json:"text,omitempty"`
 }
 
-func (o *Verses) GetVerse() *string {
+func (o *Verse) GetVerse() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Verse
 }
 
-func (o *Verses) GetText() *string {
+func (o *Verse) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-type Results struct {
+type Result struct {
 	// The passage reference
 	Reference *string `json:"reference,omitempty"`
 	// The matching passage content
-	Content *string  `json:"content,omitempty"`
-	Verses  []Verses `json:"verses,omitempty"`
+	Content *string `json:"content,omitempty"`
+	Verses  []Verse `json:"verses,omitempty"`
 }
 
-func (o *Results) GetReference() *string {
+func (o *Result) GetReference() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Reference
 }
 
-func (o *Results) GetContent() *string {
+func (o *Result) GetContent() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Content
 }
 
-func (o *Results) GetVerses() []Verses {
+func (o *Result) GetVerses() []Verse {
 	if o == nil {
 		return nil
 	}
@@ -105,8 +105,8 @@ type SearchPassagesResponseBody struct {
 	// Total number of pages
 	TotalPages *int64 `json:"total_pages,omitempty"`
 	// Total number of results
-	TotalResults *int64    `json:"total_results,omitempty"`
-	Results      []Results `json:"results,omitempty"`
+	TotalResults *int64   `json:"total_results,omitempty"`
+	Results      []Result `json:"results,omitempty"`
 }
 
 func (o *SearchPassagesResponseBody) GetPage() *int64 {
@@ -130,7 +130,7 @@ func (o *SearchPassagesResponseBody) GetTotalResults() *int64 {
 	return o.TotalResults
 }
 
-func (o *SearchPassagesResponseBody) GetResults() []Results {
+func (o *SearchPassagesResponseBody) GetResults() []Result {
 	if o == nil {
 		return nil
 	}
