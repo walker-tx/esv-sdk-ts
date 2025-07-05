@@ -11,7 +11,6 @@ async function run() {
     query: "John 1:1",
   });
 
-  // Handle the result
   console.log(result);
 }
 
