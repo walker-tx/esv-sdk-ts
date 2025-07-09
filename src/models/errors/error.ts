@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { EsvError } from "./esverror.js";
 
 export type ErrorTData = {
   code: string;
@@ -10,20 +11,20 @@ export type ErrorTData = {
   details?: { [k: string]: any } | undefined;
 };
 
-export class ErrorT extends Error {
+export class ErrorT extends EsvError {
   code: string;
   details?: { [k: string]: any } | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: ErrorTData;
 
-  constructor(err: ErrorTData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: ErrorTData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
     this.code = err.code;
     if (err.details != null) this.details = err.details;
 
@@ -37,9 +38,16 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
     code: z.string(),
     message: z.string(),
     details: z.record(z.any()).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
   .transform((v) => {
-    return new ErrorT(v);
+    return new ErrorT(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

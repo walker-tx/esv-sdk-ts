@@ -3,18 +3,18 @@ id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
   docChecksum: 96f346615800012922884025afaa105c
   docVersion: 1.0.0
-  speakeasyVersion: 1.551.0
-  generationVersion: 2.610.0
-  releaseVersion: 0.3.3
-  configChecksum: 9610e1fea62f7c1764e409184b0c5b8e
+  speakeasyVersion: 1.580.0
+  generationVersion: 2.654.2
+  releaseVersion: 0.4.0
+  configChecksum: ab0cb206fca9f418378071a2f59dd311
   repoURL: https://github.com/walker-tx/esv-sdk-ts.git
   installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.21.9
+    constsAndDefaults: 0.1.12
+    core: 3.21.13
     defaultEnabledRetries: 0.1.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
@@ -23,14 +23,14 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
-    mcpServer: 0.9.2
-    mockServer: 0.1.0
+    mcpServer: 0.9.3
+    mockServer: 0.1.1
     nameOverrides: 2.81.2
     pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
-    tests: 0.16.2
+    sdkHooks: 0.3.0
+    tests: 0.17.1
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -54,6 +54,10 @@ generatedFiles:
   - docs/sdks/esv/README.md
   - docs/sdks/passages/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/package.json
+  - examples/passagesGetHtml.example.ts
   - jsr.json
   - package.json
   - src/__tests__/assertions.ts
@@ -159,8 +163,10 @@ generatedFiles:
   - src/models/components/security.ts
   - src/models/errors/apierror.ts
   - src/models/errors/error.ts
+  - src/models/errors/esverror.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/operations/getpassageaudio.ts
   - src/models/operations/getpassagehtml.ts
@@ -358,6 +364,31 @@ examples:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
     "":
+      parameters:
+        query:
+          q: "<value>"
+          include-passage-references: true
+          include-verse-numbers: true
+          include-first-verse-numbers: true
+          include-footnotes: true
+          include-footnote-body: true
+          include-headings: true
+          include-short-copyright: false
+          include-copyright: false
+          include-passage-horizontal-lines: false
+          include-heading-horizontal-lines: false
+          horizontal-line-length: 55
+          include-selahs: true
+          include-css-link: true
+          inline-styles: false
+          wrapping-div: true
+          div-classes: "esv"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    speakeasy-default-get-passage-html:
       parameters:
         query:
           q: "<value>"
@@ -656,6 +687,34 @@ examples:
         "400":
           application/json: {"code": "<value>", "message": "<value>"}
     "":
+      parameters:
+        query:
+          q: "<value>"
+          include-passage-references: true
+          include-verse-numbers: true
+          include-first-verse-numbers: true
+          include-footnotes: true
+          include-footnote-body: true
+          include-headings: true
+          include-short-copyright: false
+          include-copyright: false
+          include-passage-horizontal-lines: false
+          include-heading-horizontal-lines: false
+          horizontal-line-length: 55
+          include-selahs: true
+          indent-using: "space"
+          indent-paragraphs: 2
+          indent-poetry: 2
+          indent-poetry-lines: 4
+          indent-declares: 40
+          indent-psalm-doxology: 30
+          line-length: 0
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+    speakeasy-default-get-passage-text:
       parameters:
         query:
           q: "<value>"

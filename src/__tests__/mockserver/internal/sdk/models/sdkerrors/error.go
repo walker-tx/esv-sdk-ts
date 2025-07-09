@@ -4,12 +4,14 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"mockserver/internal/sdk/models/components"
 )
 
 type Error struct {
-	Code    string         `json:"code"`
-	Message string         `json:"message"`
-	Details map[string]any `json:"details,omitempty"`
+	Code     string                  `json:"code"`
+	Message  string                  `json:"message"`
+	Details  map[string]any          `json:"details,omitempty"`
+	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
 var _ error = &Error{}
