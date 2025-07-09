@@ -31,7 +31,6 @@ async function run() {
     query: "John 1:1",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -56,15 +55,12 @@ async function run() {
   const res = await passagesGetHtml(esv, {
     query: "John 1:1",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("passagesGetHtml failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,7 +108,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -138,16 +133,13 @@ async function run() {
   const res = await passagesSearch(esv, {
     query: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("passagesSearch failed:", res.error);
   }
 }
 
@@ -195,7 +187,6 @@ async function run() {
     query: "John 1:1",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -220,15 +211,12 @@ async function run() {
   const res = await passagesGetAudio(esv, {
     query: "John 1:1",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("passagesGetAudio failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -275,7 +263,6 @@ async function run() {
     query: "John 1:1",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -300,15 +287,12 @@ async function run() {
   const res = await passagesGetText(esv, {
     query: "John 1:1",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("passagesGetText failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
