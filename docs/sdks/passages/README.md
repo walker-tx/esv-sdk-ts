@@ -19,6 +19,7 @@ Esv.org API Docs for `/v3/passages/html`
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPassageHtml" method="get" path="/passage/html/" -->
 ```typescript
 import { Esv } from "esv-sdk";
 
@@ -95,6 +96,7 @@ Esv.org API Docs for `/v3/passage/search`
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="searchPassages" method="get" path="/passage/search/" -->
 ```typescript
 import { Esv } from "esv-sdk";
 
@@ -175,6 +177,7 @@ Esv.org API Docs for `/v3/passage/audio`
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPassageAudio" method="get" path="/passage/audio/" -->
 ```typescript
 import { Esv } from "esv-sdk";
 
@@ -251,6 +254,7 @@ Esv.org API Docs for `/v3/passages/text`
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPassageText" method="get" path="/passage/text/" -->
 ```typescript
 import { Esv } from "esv-sdk";
 
