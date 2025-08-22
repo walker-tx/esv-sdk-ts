@@ -28,7 +28,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Esv",
-    version: "0.4.2",
+    version: "0.4.3",
   });
 
   const client = new EsvCore({

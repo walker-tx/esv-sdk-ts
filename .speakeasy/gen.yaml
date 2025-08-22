@@ -24,7 +24,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.4.2
+  version: 0.4.3
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -61,4 +61,5 @@ typescript:
   packageName: esv-sdk
   responseFormat: flat
   templateVersion: v2
+  usageSDKInitImports: []
   useIndexModules: true
