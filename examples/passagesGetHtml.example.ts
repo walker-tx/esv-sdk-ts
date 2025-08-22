@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the esv-sdk SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx passagesGetHtml.ts
+ * npm run build && npx tsx passagesGetHtml.example.ts
  */
 
 import { Esv } from "esv-sdk";
