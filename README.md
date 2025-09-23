@@ -517,7 +517,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Esv({ httpClient });
+const sdk = new Esv({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
