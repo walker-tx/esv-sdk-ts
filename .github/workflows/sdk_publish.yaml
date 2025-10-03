@@ -14,7 +14,7 @@ permissions:
   workflow_dispatch: {}
 jobs:
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@b57e90c40c3603df5669c10053e90d560f088a81
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@995647531b4de70ba615e869506829c1e387d319
     with:
       target: esv
       environment: |
