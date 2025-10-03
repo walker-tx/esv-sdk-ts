@@ -14,10 +14,9 @@ permissions:
   workflow_dispatch: {}
 jobs:
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@995647531b4de70ba615e869506829c1e387d319
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@15
     with:
       target: esv
-      node_options: "--max-old-space-size=1"
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN }}
