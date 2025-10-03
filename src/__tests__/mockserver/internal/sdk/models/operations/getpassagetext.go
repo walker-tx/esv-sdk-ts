@@ -84,7 +84,7 @@ func (g GetPassageTextRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetPassageTextRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"q"}); err != nil {
 		return err
 	}
 	return nil
