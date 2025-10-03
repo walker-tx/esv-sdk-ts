@@ -18,7 +18,7 @@ const esv = new Esv({
 });
 
 async function main() {
-  const result = await esv.getHtml({
+  const result = await esv.passages.getHtml({
     query: "John 1:1",
   });
 

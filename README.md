@@ -72,10 +72,7 @@ bun add esv-sdk
 ### Yarn
 
 ```bash
-yarn add esv-sdk zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add esv-sdk
 ```
 
 > [!NOTE]
@@ -517,7 +514,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Esv({ httpClient });
+const sdk = new Esv({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
