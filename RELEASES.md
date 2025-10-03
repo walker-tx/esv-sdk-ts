@@ -89,3 +89,13 @@ Based on:
 - [typescript v0.4.4] .
 ### Releases
 - [NPM v0.4.4] https://www.npmjs.com/package/esv-sdk/v/0.4.4 - .
+
+## 2025-10-03 00:46:35
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.634.0 (2.721.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.4.5] .
+### Releases
+- [NPM v0.4.5] https://www.npmjs.com/package/esv-sdk/v/0.4.5 - .
