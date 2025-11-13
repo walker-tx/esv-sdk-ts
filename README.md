@@ -232,7 +232,6 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-
 ### [passages](docs/sdks/passages/README.md)
 
 * [getHtml](docs/sdks/passages/README.md#gethtml) - Get Bible passage HTML
