@@ -3,10 +3,10 @@ id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
   docChecksum: 96f346615800012922884025afaa105c
   docVersion: 1.0.0
-  speakeasyVersion: 1.634.0
-  generationVersion: 2.721.0
-  releaseVersion: 0.4.5
-  configChecksum: 77ce3dfbb224903886bf2f488dc7853a
+  speakeasyVersion: 1.656.2
+  generationVersion: 2.753.6
+  releaseVersion: 0.5.0
+  configChecksum: e7788cc00af2ec93d9f424f5b57422fb
   repoURL: https://github.com/walker-tx/esv-sdk-ts.git
   installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.26.6
     defaultEnabledRetries: 0.1.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
@@ -22,7 +22,7 @@ features:
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     mcpServer: 0.9.3
     mockServer: 0.1.1
     nameOverrides: 2.81.2
@@ -51,7 +51,6 @@ generatedFiles:
   - docs/models/operations/searchpassagesresponse.md
   - docs/models/operations/searchpassagesresponsebody.md
   - docs/models/operations/verses.md
-  - docs/sdks/esv/README.md
   - docs/sdks/passages/README.md
   - eslint.config.mjs
   - examples/.env.template

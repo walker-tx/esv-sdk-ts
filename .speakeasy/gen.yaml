@@ -20,12 +20,15 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
     hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.4.5
+  version: 0.5.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -33,6 +36,8 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     description: An SDK for the ESV API, with support for React Query and MCP.
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Walker Lockard
   baseErrorName: EsvError
   clientServerStatusCodesAsErrors: true
@@ -43,6 +48,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: ESV
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   generateExamples: true
@@ -65,5 +71,7 @@ typescript:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: true
+  zodVersion: v3
