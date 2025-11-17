@@ -23,9 +23,10 @@ permissions:
       - unlabeled
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@037afdb60a6b05c7ee1116a877850ee1ab279a3a
     with:
       force: ${{ github.event.inputs.force }}
+      skip_versioning: true
       mode: pr
       set_version: ${{ github.event.inputs.set_version }}
     secrets:
