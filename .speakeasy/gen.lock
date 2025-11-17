@@ -3,10 +3,10 @@ id: 6e5cc09c-fe17-4475-aba0-8ecf0f8a58ef
 management:
   docChecksum: 96f346615800012922884025afaa105c
   docVersion: 1.0.0
-  speakeasyVersion: 1.656.2
-  generationVersion: 2.753.6
-  releaseVersion: 0.5.0
-  configChecksum: e7788cc00af2ec93d9f424f5b57422fb
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 0.5.1
+  configChecksum: 7cda6a65f341ad624cdd6c77a0085e7e
   repoURL: https://github.com/walker-tx/esv-sdk-ts.git
   installationURL: https://github.com/walker-tx/esv-sdk-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.6
+    core: 3.26.7
     defaultEnabledRetries: 0.1.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
