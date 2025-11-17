@@ -15,6 +15,10 @@ permissions:
       set_version:
         description: optionally set a specific SDK version
         type: string
+      skip_versioning:
+        description: Skip versioning
+        type: boolean
+        default: false
   schedule:
     - cron: 0 0 * * *
   pull_request:
@@ -26,7 +30,6 @@ jobs:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@037afdb60a6b05c7ee1116a877850ee1ab279a3a
     with:
       force: ${{ github.event.inputs.force }}
-      skip_versioning: true
       mode: pr
       set_version: ${{ github.event.inputs.set_version }}
     secrets:
